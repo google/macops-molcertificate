@@ -1,0 +1,395 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D53CACD1B71548E00073187 /* libMOLCertificate.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D53CAC11B71548E00073187 /* libMOLCertificate.dylib */; };
+		0D53CADD1B71549A00073187 /* MOLCertificate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D53CADB1B71549A00073187 /* MOLCertificate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0D53CADE1B71549A00073187 /* MOLCertificate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D53CADC1B71549A00073187 /* MOLCertificate.m */; };
+		0D53CAE01B7154A000073187 /* MOLCertificateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D53CADF1B7154A000073187 /* MOLCertificateTest.m */; };
+		0D53CAE51B7154B700073187 /* apple.pem in Resources */ = {isa = PBXBuildFile; fileRef = 0D53CAE11B7154B700073187 /* apple.pem */; };
+		0D53CAE61B7154B700073187 /* GIAG2.crt in Resources */ = {isa = PBXBuildFile; fileRef = 0D53CAE21B7154B700073187 /* GIAG2.crt */; };
+		0D53CAE71B7154B700073187 /* GIAG2.pem in Resources */ = {isa = PBXBuildFile; fileRef = 0D53CAE31B7154B700073187 /* GIAG2.pem */; };
+		0D53CAE81B7154B700073187 /* tubitak.crt in Resources */ = {isa = PBXBuildFile; fileRef = 0D53CAE41B7154B700073187 /* tubitak.crt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0D53CACE1B71548E00073187 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0D53CAB91B71548E00073187 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0D53CAC01B71548E00073187;
+			remoteInfo = MOLCertificate;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0D53CAC11B71548E00073187 /* libMOLCertificate.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libMOLCertificate.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D53CACC1B71548E00073187 /* MOLCertificateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MOLCertificateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D53CAD21B71548E00073187 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D53CADB1B71549A00073187 /* MOLCertificate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOLCertificate.h; sourceTree = "<group>"; };
+		0D53CADC1B71549A00073187 /* MOLCertificate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOLCertificate.m; sourceTree = "<group>"; };
+		0D53CADF1B7154A000073187 /* MOLCertificateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOLCertificateTest.m; sourceTree = "<group>"; };
+		0D53CAE11B7154B700073187 /* apple.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = apple.pem; sourceTree = "<group>"; };
+		0D53CAE21B7154B700073187 /* GIAG2.crt */ = {isa = PBXFileReference; lastKnownFileType = file; path = GIAG2.crt; sourceTree = "<group>"; };
+		0D53CAE31B7154B700073187 /* GIAG2.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GIAG2.pem; sourceTree = "<group>"; };
+		0D53CAE41B7154B700073187 /* tubitak.crt */ = {isa = PBXFileReference; lastKnownFileType = file; path = tubitak.crt; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0D53CABE1B71548E00073187 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D53CAC91B71548E00073187 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D53CACD1B71548E00073187 /* libMOLCertificate.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0D53CAB81B71548E00073187 = {
+			isa = PBXGroup;
+			children = (
+				0D53CAC31B71548E00073187 /* Source */,
+				0D53CAD01B71548E00073187 /* Tests */,
+				0D53CAC21B71548E00073187 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0D53CAC21B71548E00073187 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0D53CAC11B71548E00073187 /* libMOLCertificate.dylib */,
+				0D53CACC1B71548E00073187 /* MOLCertificateTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0D53CAC31B71548E00073187 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				0D53CADB1B71549A00073187 /* MOLCertificate.h */,
+				0D53CADC1B71549A00073187 /* MOLCertificate.m */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		0D53CAD01B71548E00073187 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				0D53CAE11B7154B700073187 /* apple.pem */,
+				0D53CAE21B7154B700073187 /* GIAG2.crt */,
+				0D53CAE31B7154B700073187 /* GIAG2.pem */,
+				0D53CAE41B7154B700073187 /* tubitak.crt */,
+				0D53CADF1B7154A000073187 /* MOLCertificateTest.m */,
+				0D53CAD11B71548E00073187 /* Supporting Files */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		0D53CAD11B71548E00073187 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0D53CAD21B71548E00073187 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0D53CABF1B71548E00073187 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D53CADD1B71549A00073187 /* MOLCertificate.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0D53CAC01B71548E00073187 /* MOLCertificate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D53CAD51B71548E00073187 /* Build configuration list for PBXNativeTarget "MOLCertificate" */;
+			buildPhases = (
+				0D53CABD1B71548E00073187 /* Sources */,
+				0D53CABE1B71548E00073187 /* Frameworks */,
+				0D53CABF1B71548E00073187 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MOLCertificate;
+			productName = MOLCertificate;
+			productReference = 0D53CAC11B71548E00073187 /* libMOLCertificate.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		0D53CACB1B71548E00073187 /* MOLCertificateTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D53CAD81B71548E00073187 /* Build configuration list for PBXNativeTarget "MOLCertificateTests" */;
+			buildPhases = (
+				0D53CAC81B71548E00073187 /* Sources */,
+				0D53CAC91B71548E00073187 /* Frameworks */,
+				0D53CACA1B71548E00073187 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0D53CACF1B71548E00073187 /* PBXTargetDependency */,
+			);
+			name = MOLCertificateTests;
+			productName = MOLCertificateTests;
+			productReference = 0D53CACC1B71548E00073187 /* MOLCertificateTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0D53CAB91B71548E00073187 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Google Inc";
+				TargetAttributes = {
+					0D53CAC01B71548E00073187 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					0D53CACB1B71548E00073187 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 0D53CABC1B71548E00073187 /* Build configuration list for PBXProject "MOLCertificate" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0D53CAB81B71548E00073187;
+			productRefGroup = 0D53CAC21B71548E00073187 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0D53CAC01B71548E00073187 /* MOLCertificate */,
+				0D53CACB1B71548E00073187 /* MOLCertificateTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0D53CACA1B71548E00073187 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D53CAE71B7154B700073187 /* GIAG2.pem in Resources */,
+				0D53CAE61B7154B700073187 /* GIAG2.crt in Resources */,
+				0D53CAE81B7154B700073187 /* tubitak.crt in Resources */,
+				0D53CAE51B7154B700073187 /* apple.pem in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0D53CABD1B71548E00073187 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D53CADE1B71549A00073187 /* MOLCertificate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D53CAC81B71548E00073187 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D53CAE01B7154A000073187 /* MOLCertificateTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0D53CACF1B71548E00073187 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0D53CAC01B71548E00073187 /* MOLCertificate */;
+			targetProxy = 0D53CACE1B71548E00073187 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0D53CAD31B71548E00073187 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		0D53CAD41B71548E00073187 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		0D53CAD61B71548E00073187 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0D53CAD71B71548E00073187 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		0D53CAD91B71548E00073187 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0D53CADA1B71548E00073187 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0D53CABC1B71548E00073187 /* Build configuration list for PBXProject "MOLCertificate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D53CAD31B71548E00073187 /* Debug */,
+				0D53CAD41B71548E00073187 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0D53CAD51B71548E00073187 /* Build configuration list for PBXNativeTarget "MOLCertificate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D53CAD61B71548E00073187 /* Debug */,
+				0D53CAD71B71548E00073187 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0D53CAD81B71548E00073187 /* Build configuration list for PBXNativeTarget "MOLCertificateTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D53CAD91B71548E00073187 /* Debug */,
+				0D53CADA1B71548E00073187 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0D53CAB91B71548E00073187 /* Project object */;
+}
