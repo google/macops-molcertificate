@@ -61,11 +61,11 @@ static NSString *const kCertDataKey = @"certData";
 }
 
 - (instancetype)initWithCertificateDataPEM:(NSString *)certData {
-  // Find the PEM and extract the base64-encoded DER data from within
+  // Find the PEM and extract the Base64-encoded DER data from within
   NSScanner *scanner = [NSScanner scannerWithString:certData];
   NSString *base64der;
 
-  // Locate and parse DER data into |base64der|
+  // Locate and parse DER data into base64der
   [scanner scanUpToString:@"-----BEGIN CERTIFICATE-----" intoString:NULL];
   if (!([scanner scanString:@"-----BEGIN CERTIFICATE-----" intoString:NULL] &&
         [scanner scanUpToString:@"-----END CERTIFICATE-----" intoString:&base64der] &&
@@ -73,7 +73,7 @@ static NSString *const kCertDataKey = @"certData";
     return nil;
   }
 
-  // base64-decode the DER
+  // Base64-decode the DER
   SecTransformRef transform = SecDecodeTransformCreate(kSecBase64Encoding, NULL);
   if (!transform) return nil;
   NSData *input = [base64der dataUsingEncoding:NSUTF8StringEncoding];
@@ -100,13 +100,11 @@ static NSString *const kCertDataKey = @"certData";
     [scanner scanUpToString:@"-----BEGIN CERTIFICATE-----" intoString:NULL];
     [scanner scanUpToString:@"-----END CERTIFICATE-----" intoString:&curCert];
 
-    // If there was no data, break.
     if (!curCert) break;
 
     curCert = [curCert stringByAppendingString:@"-----END CERTIFICATE-----"];
     MOLCertificate *cert = [[MOLCertificate alloc] initWithCertificateDataPEM:curCert];
 
-    // If the data couldn't be turned into a valid MOLCertificate, continue.
     if (!cert) continue;
 
     [certs addObject:cert];
@@ -164,11 +162,12 @@ static NSString *const kCertDataKey = @"certData";
 
 #pragma mark Private Accessors
 
-///
-/// For a given selector, caches the value that selector would return on subsequent invocations,
-/// using the provided block to get the value on the first invocation.
-/// Assumes the selector's value will never change.
-///
+/**
+  For a given selector, caches the value that selector would return on subsequent invocations,
+  using the provided block to get the value on the first invocation.
+
+  Assumes the selector's value will never change.
+*/
 - (id)memoizedSelector:(SEL)selector forBlock:(id (^)(void))block {
   NSString *selName = NSStringFromSelector(selector);
 
@@ -213,13 +212,13 @@ static NSString *const kCertDataKey = @"certData";
     }];
 }
 
-///
-///  Retrieve the value with the specified label from the X509 dictionary provided
-///
-///  @param desiredLabel The label you want, e.g: kSecOIDOrganizationName.
-///  @param dict The dictionary to look in (Subject, Issuer or SAN)
-///  @return An @c NSString, the value for the specified label.
-///
+/**
+  Retrieve the value with the specified label from the X509 dictionary provided
+
+  @param desiredLabel The label you want, e.g: kSecOIDOrganizationName.
+  @param dict The dictionary to look in (Subject, Issuer or SAN)
+  @return An `NSString`, the value for the specified label.
+*/
 - (NSString *)x509ValueForLabel:(NSString *)desiredLabel fromDictionary:(NSDictionary *)dict {
   @try {
     NSArray *valArray = dict[(__bridge NSString *)kSecPropertyKeyValue];
@@ -237,13 +236,13 @@ static NSString *const kCertDataKey = @"certData";
   }
 }
 
-///
-///  Retrieve the list with the specified label from the X509 dictionary provided
-///
-///  @param desiredLabel The label you want, e.g: DNS Name.
-///  @param dict The dictionary to look in (SAN)
-///  @return An @c NSString, the value for the specified label.
-///
+/**
+  Retrieve the list with the specified label from the X509 dictionary provided
+
+  @param desiredLabel The label you want, e.g: DNS Name.
+  @param dict The dictionary to look in (SAN)
+  @return An `NSString`, the value for the specified label.
+*/
 - (NSArray *)x509ListForLabel:(NSString *)desiredLabel fromDictionary:(NSDictionary *)dict {
   @try {
     NSArray *valArray = dict[(__bridge NSString *)kSecPropertyKeyValue];
@@ -262,13 +261,13 @@ static NSString *const kCertDataKey = @"certData";
   }
 }
 
-///
-/// Retrieve the specified date from the certificate's values and convert from a reference date
-/// to an NSDate object.
-///
-/// @param key The identifier for the date: @c kSecOIDX509V1ValiditityNot{Before,After}
-/// @return An @c NSDate representing the date and time the certificate is valid from or expires.
-///
+/**
+  Retrieve the specified date from the certificate's values and convert from a reference date
+  to an NSDate object.
+
+  @param key The identifier for the date: e.g. `kSecOIDX509V1ValiditityNotBefore`
+  @return An `NSDate` representing the date and time the certificate is valid from or expires.
+*/
 - (NSDate *)dateForX509Key:(NSString *)key {
   NSDictionary *curCertVal = [self allCertificateValues][key];
   NSNumber *value = curCertVal[(__bridge NSString *)kSecPropertyKeyValue];
@@ -391,8 +390,7 @@ static NSString *const kCertDataKey = @"certData";
 - (BOOL)isCA {
   return [[self memoizedSelector:_cmd forBlock:^id{
     NSDictionary *dict = [self allCertificateValues][(__bridge NSString *)kSecOIDBasicConstraints];
-    return [self x509ValueForLabel:@"Certificate Authority"
-                    fromDictionary:dict];
+    return [self x509ValueForLabel:@"Certificate Authority" fromDictionary:dict];
   }] isEqual:@"Yes"];
 }
 
@@ -412,8 +410,7 @@ static NSString *const kCertDataKey = @"certData";
 
 - (NSArray *)dnsNames {
   return [self memoizedSelector:_cmd forBlock:^id{
-    return [self x509ListForLabel:@"DNS Name"
-                   fromDictionary:[self x509SubjectAltName]];
+    return [self x509ListForLabel:@"DNS Name" fromDictionary:[self x509SubjectAltName]];
   }];
 }
 

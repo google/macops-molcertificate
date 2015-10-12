@@ -14,120 +14,107 @@
 
 #import <Foundation/Foundation.h>
 
-///
-///  MOLCertificate wraps a @c SecCertificateRef to provide Objective-C accessors to
-///  commonly used certificate data. Accessors cache data for repeated access.
-///
-@interface MOLCertificate : NSObject<NSSecureCoding>
+/** An Objective-C wrapper around `SecCertificateRef` objects provided by the Security framework.
 
-///
-///  Initialize a MOLCertificate object with a valid SecCertificateRef. Designated initializer.
-///
-///  @param certRef valid SecCertificateRef, which will be retained.
-///
+  Accessors are read-only properties and access to each property is cached for future use.
+ 
+  `MOLCertificate` objects can be passed over an XPC connection freely, though the receiving
+  end will not benefit from any previously cached properties and the underlying SecCertificateRef
+  may be different.
+*/
+@interface MOLCertificate : NSObject <NSSecureCoding>
+
+/**
+  Initialize a `MOLCertificate` object with a valid `SecCertificateRef`.
+ 
+  Designated initializer.
+
+  @param certRef A valid `SecCertificateRef`, which will be retained.
+*/
 - (instancetype)initWithSecCertificateRef:(SecCertificateRef)certRef;
 
-///
-///  Initialize a MOLCertificate object with certificate data in DER format.
-///
-///  @param certData DER-encoded certificate data.
-///  @return initialized MOLCertificate or nil if certData is not a DER-encoded certificate.
-///
+/**
+  Initialize a `MOLCertificate` object with certificate data in DER format.
+
+  @param certData DER-encoded certificate data.
+  @return An initialized `MOLCertificate` or `nil` if the input is not a DER-encoded certificate.
+*/
 - (instancetype)initWithCertificateDataDER:(NSData *)certData;
 
-///
-///  Initialize a MOLCertificate object with certificate data in PEM format.
-///  If multiple PEM certificates exist within the string, the first is used.
-///
-///  @param certData PEM-encoded certificate data.
-///  @return initialized GMOCertifcate or nil if certData is not a PEM-encoded certificate.
-///
+/**
+  Initialize a `MOLCertificate` object with certificate data in PEM format.
+  If multiple PEM certificates exist within the string, the first is used.
+
+  @param certData PEM-encoded certificate data.
+  @return An initialized `MOLCertifcate` or `nil` if the input is not a PEM-encoded certificate.
+*/
 - (instancetype)initWithCertificateDataPEM:(NSString *)certData;
 
-///
-///  Returns an array of MOLCertificate's for all of the certificates in @c pemData.
-///
-///  @param pemData PEM-encoded certificates.
-///  @return array of MOLCertificate objects.
-///
+/**
+  Returns an array of `MOLCertificate's` for all of the certificates in `pemData`.
+
+  @param pemData PEM-encoded certificates.
+  @return An array of `MOLCertificate` objects for each valid PEM in `pemData`.
+*/
 + (NSArray *)certificatesFromPEM:(NSString *)pemData;
 
-///
-///  Access the underlying certificate ref.
-///
+/**
+  Access the underlying certificate ref.
+ 
+  If you're planning on using the ref for a long time, you should
+  CFRetain() it and CFRelease() it when you're finished.
+*/
 @property(readonly, nonatomic) SecCertificateRef certRef;
 
-///
-///  SHA-1 hash of the certificate data.
-///
+/**  SHA-1 hash of the certificate data. */
 @property(readonly, nonatomic) NSString *SHA1;
 
-///
-///  SHA-256 hash of the certificate data.
-///
+/**  SHA-256 hash of the certificate data. */
 @property(readonly, nonatomic) NSString *SHA256;
 
-///
-///  Certificate data.
-///
+/**  Certificate data in DER format. */
 @property(readonly, nonatomic) NSData *certData;
 
-///
-///  Common Name e.g: "Software Signing"
-///
+/**  Common Name e.g: "Software Signing" */
 @property(readonly, nonatomic) NSString *commonName;
 
-///
-///  Country Name e.g: "US"
-///
+/**  Country Name e.g: "US" */
 @property(readonly, nonatomic) NSString *countryName;
 
-///
-///  Organizational Name e.g: "Apple Inc."
-///
+/**  Organization Name e.g: "Apple Inc." */
 @property(readonly, nonatomic) NSString *orgName;
 
-///
-///  Organizational Unit Name e.g: "Apple Software"
-///
+/**  Organizational Unit Name e.g: "Apple Software" */
 @property(readonly, nonatomic) NSString *orgUnit;
 
-///
-///  Is this cert a CA?
-///
+/**  Is this cert able to issue certs? */
 @property(readonly, nonatomic) BOOL isCA;
 
-///
-///  The cert serial number
-///
+/**  The cert serial number. */
 @property(readonly, nonatomic) NSString *serialNumber;
 
-///
-///  Issuer details, same fields as above.
-///
+/**  Issuer common name. */
 @property(readonly, nonatomic) NSString *issuerCommonName;
+
+/**  Issuer country name. */
 @property(readonly, nonatomic) NSString *issuerCountryName;
+
+/**  Issuer organization name. */
 @property(readonly, nonatomic) NSString *issuerOrgName;
+
+/**  Issuer organizational unit. */
 @property(readonly, nonatomic) NSString *issuerOrgUnit;
 
-///
-///  Validity Not Before
-///
+/**  Validity not before / valid from date. */
 @property(readonly, nonatomic) NSDate *validFrom;
 
-///
-///  Validity Not After
-///
+/**  Validity not after / valid until date. */
 @property(readonly, nonatomic) NSDate *validUntil;
 
-///
-///  NT Principal Name
-///
+/**  NT Principal Name */
 @property(readonly, nonatomic) NSString *ntPrincipalName;
 
-///
-///  DNS Names
-///
+/**  DNS Names / SANs */
 @property(readonly, nonatomic) NSArray *dnsNames;
 
 @end
