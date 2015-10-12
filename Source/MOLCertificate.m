@@ -207,11 +207,17 @@ static NSString *const kCertDataKey = @"certData";
   }];
 }
 
+- (NSDictionary *)x509SubjectAltName {
+    return [self memoizedSelector:_cmd forBlock:^id{
+        return [self allCertificateValues][(__bridge NSString *)kSecOIDSubjectAltName];
+    }];
+}
+
 ///
 ///  Retrieve the value with the specified label from the X509 dictionary provided
 ///
 ///  @param desiredLabel The label you want, e.g: kSecOIDOrganizationName.
-///  @param dict The dictionary to look in (Subject or Issuer)
+///  @param dict The dictionary to look in (Subject, Issuer or SAN)
 ///  @return An @c NSString, the value for the specified label.
 ///
 - (NSString *)x509ValueForLabel:(NSString *)desiredLabel fromDictionary:(NSDictionary *)dict {
@@ -225,6 +231,31 @@ static NSString *const kCertDataKey = @"certData";
       }
     }
     return nil;
+  }
+  @catch (NSException *e) {
+    return nil;
+  }
+}
+
+///
+///  Retrieve the list with the specified label from the X509 dictionary provided
+///
+///  @param desiredLabel The label you want, e.g: DNS Name.
+///  @param dict The dictionary to look in (SAN)
+///  @return An @c NSString, the value for the specified label.
+///
+- (NSArray *)x509ListForLabel:(NSString *)desiredLabel fromDictionary:(NSDictionary *)dict {
+  @try {
+    NSArray *valArray = dict[(__bridge NSString *)kSecPropertyKeyValue];
+    NSMutableArray *retArray = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary *curCertVal in valArray) {
+      NSString *valueLabel = curCertVal[(__bridge NSString *)kSecPropertyKeyLabel];
+      if ([valueLabel isEqual:desiredLabel]) {
+        [retArray addObject:curCertVal[(__bridge NSString *)kSecPropertyKeyValue]];
+      }
+    }
+    return (retArray.count == 0) ? nil : (NSArray *)retArray;
   }
   @catch (NSException *e) {
     return nil;
@@ -369,6 +400,20 @@ static NSString *const kCertDataKey = @"certData";
   return [self memoizedSelector:_cmd forBlock:^id{
     NSDictionary *dict = [self allCertificateValues][(__bridge NSString *)kSecOIDX509V1SerialNumber];
     return dict[(__bridge NSString *)kSecPropertyKeyValue];
+  }];
+}
+
+- (NSString *)ntPrincipalName {
+  return [self memoizedSelector:_cmd forBlock:^id{
+    return [self x509ValueForLabel:(__bridge NSString *)kSecOIDMS_NTPrincipalName
+                    fromDictionary:[self x509SubjectAltName]];
+  }];
+}
+
+- (NSArray *)dnsNames {
+  return [self memoizedSelector:_cmd forBlock:^id{
+    return [self x509ListForLabel:@"DNS Name"
+                   fromDictionary:[self x509SubjectAltName]];
   }];
 }
 

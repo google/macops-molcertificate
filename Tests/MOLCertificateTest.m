@@ -22,6 +22,7 @@
 @property NSData *testDataDER1;
 @property NSData *testDataDER2;
 @property NSString *testDataPrivateKey;
+@property NSString *testNTPrincipalName;
 @end
 
 @implementation MOLCertificateTest
@@ -38,6 +39,11 @@
   self.testDataPEM2 = [NSString stringWithContentsOfFile:file
                                                 encoding:NSUTF8StringEncoding
                                                    error:nil];
+  
+  file = [[NSBundle bundleForClass:[self class]] pathForResource:@"NTPrincipalName" ofType:@"pem"];
+  self.testNTPrincipalName = [NSString stringWithContentsOfFile:file
+                                                       encoding:NSUTF8StringEncoding
+                                                          error:nil];
 
   file = [[NSBundle bundleForClass:[self class]] pathForResource:@"GIAG2" ofType:@"crt"];
   self.testDataDER1 = [NSData dataWithContentsOfFile:file];
@@ -126,6 +132,13 @@
   XCTAssertEqualObjects(sut.validUntil, [NSDate dateWithString:@"2015-11-14 23:59:59 +0000"]);
   XCTAssertFalse(sut.isCA);
   XCTAssertEqualObjects(sut.serialNumber, @"5E FA 67 0E 99 E4 AB 88 E0 F2 0B 33 86 7B 78 4D");
+  XCTAssertNotNil(sut.dnsNames);
+  XCTAssertEqual(sut.dnsNames.count, 1);
+  XCTAssertEqualObjects(sut.dnsNames[0], @"www.apple.com");
+  
+  sut = [[MOLCertificate alloc] initWithCertificateDataPEM:self.testNTPrincipalName];
+  XCTAssertNotNil(sut);
+  XCTAssertEqualObjects(sut.ntPrincipalName, @"lha@TEST.H5L.SE");
 }
 
 - (void)testInitWithValidPEMAfterKey {

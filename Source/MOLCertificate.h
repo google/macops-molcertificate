@@ -120,4 +120,14 @@
 ///
 @property(readonly, nonatomic) NSDate *validUntil;
 
+///
+///  NT Principal Name
+///
+@property(readonly, nonatomic) NSString *ntPrincipalName;
+
+///
+///  DNS Names
+///
+@property(readonly, nonatomic) NSArray *dnsNames;
+
 @end

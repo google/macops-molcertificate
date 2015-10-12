@@ -15,6 +15,7 @@
 		0D53CAE61B7154B700073187 /* GIAG2.crt in Resources */ = {isa = PBXBuildFile; fileRef = 0D53CAE21B7154B700073187 /* GIAG2.crt */; };
 		0D53CAE71B7154B700073187 /* GIAG2.pem in Resources */ = {isa = PBXBuildFile; fileRef = 0D53CAE31B7154B700073187 /* GIAG2.pem */; };
 		0D53CAE81B7154B700073187 /* tubitak.crt in Resources */ = {isa = PBXBuildFile; fileRef = 0D53CAE41B7154B700073187 /* tubitak.crt */; };
+		D26C9B441BCC3BA00046845A /* NTPrincipalName.pem in Resources */ = {isa = PBXBuildFile; fileRef = D26C9B431BCC3BA00046845A /* NTPrincipalName.pem */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		0D53CAE21B7154B700073187 /* GIAG2.crt */ = {isa = PBXFileReference; lastKnownFileType = file; path = GIAG2.crt; sourceTree = "<group>"; };
 		0D53CAE31B7154B700073187 /* GIAG2.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GIAG2.pem; sourceTree = "<group>"; };
 		0D53CAE41B7154B700073187 /* tubitak.crt */ = {isa = PBXFileReference; lastKnownFileType = file; path = tubitak.crt; sourceTree = "<group>"; };
+		D26C9B431BCC3BA00046845A /* NTPrincipalName.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NTPrincipalName.pem; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				0D53CAE21B7154B700073187 /* GIAG2.crt */,
 				0D53CAE31B7154B700073187 /* GIAG2.pem */,
 				0D53CAE41B7154B700073187 /* tubitak.crt */,
+				D26C9B431BCC3BA00046845A /* NTPrincipalName.pem */,
 				0D53CADF1B7154A000073187 /* MOLCertificateTest.m */,
 				0D53CAD11B71548E00073187 /* Supporting Files */,
 			);
@@ -200,6 +203,7 @@
 				0D53CAE61B7154B700073187 /* GIAG2.crt in Resources */,
 				0D53CAE81B7154B700073187 /* tubitak.crt in Resources */,
 				0D53CAE51B7154B700073187 /* apple.pem in Resources */,
+				D26C9B441BCC3BA00046845A /* NTPrincipalName.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
