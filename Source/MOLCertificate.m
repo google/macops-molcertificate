@@ -320,70 +320,82 @@ static NSString *const kCertDataKey = @"certData";
 
 - (NSString *)commonName {
   return [self memoizedSelector:_cmd forBlock:^id{
-      CFStringRef commonName = NULL;
-      SecCertificateCopyCommonName(self.certRef, &commonName);
-      return CFBridgingRelease(commonName);
+    CFStringRef commonName = NULL;
+    SecCertificateCopyCommonName(self.certRef, &commonName);
+    return CFBridgingRelease(commonName);
   }];
 }
 
 - (NSString *)countryName {
   return [self memoizedSelector:_cmd forBlock:^id{
-      return [self x509ValueForLabel:(__bridge NSString *)kSecOIDCountryName
-                      fromDictionary:[self x509SubjectName]];
+    return [self x509ValueForLabel:(__bridge NSString *)kSecOIDCountryName
+                    fromDictionary:[self x509SubjectName]];
   }];
 }
 
 - (NSString *)orgName {
   return [self memoizedSelector:_cmd forBlock:^id{
-      return [self x509ValueForLabel:(__bridge NSString *)kSecOIDOrganizationName
-                      fromDictionary:[self x509SubjectName]];
+    return [self x509ValueForLabel:(__bridge NSString *)kSecOIDOrganizationName
+                    fromDictionary:[self x509SubjectName]];
   }];
 }
 
 - (NSString *)orgUnit {
   return [self memoizedSelector:_cmd forBlock:^id{
-      return [self x509ValueForLabel:(__bridge NSString *)kSecOIDOrganizationalUnitName
-                      fromDictionary:[self x509SubjectName]];
+    return [[self orgUnits] firstObject];
+  }];
+}
+
+- (NSString *)orgUnits {
+  return [self memoizedSelector:_cmd forBlock:^id{
+    return [self x509ListForLabel:(__bridge NSString *)kSecOIDOrganizationalUnitName
+                   fromDictionary:[self x509SubjectName]];
   }];
 }
 
 - (NSDate *)validFrom {
   return [self memoizedSelector:_cmd forBlock:^id{
-      return [self dateForX509Key:(__bridge NSString *)kSecOIDX509V1ValidityNotBefore];
+    return [self dateForX509Key:(__bridge NSString *)kSecOIDX509V1ValidityNotBefore];
   }];
 }
 
 - (NSDate *)validUntil {
   return [self memoizedSelector:_cmd forBlock:^id{
-      return [self dateForX509Key:(__bridge NSString *)kSecOIDX509V1ValidityNotAfter];
+    return [self dateForX509Key:(__bridge NSString *)kSecOIDX509V1ValidityNotAfter];
   }];
 }
 
 - (NSString *)issuerCommonName {
   return [self memoizedSelector:_cmd forBlock:^id{
-      return [self x509ValueForLabel:(__bridge NSString *)kSecOIDCommonName
-                      fromDictionary:[self x509IssuerName]];
+    return [self x509ValueForLabel:(__bridge NSString *)kSecOIDCommonName
+                    fromDictionary:[self x509IssuerName]];
   }];
 }
 
 - (NSString *)issuerCountryName {
   return [self memoizedSelector:_cmd forBlock:^id{
-      return [self x509ValueForLabel:(__bridge NSString *)kSecOIDCountryName
-                      fromDictionary:[self x509IssuerName]];
+    return [self x509ValueForLabel:(__bridge NSString *)kSecOIDCountryName
+                    fromDictionary:[self x509IssuerName]];
   }];
 }
 
 - (NSString *)issuerOrgName {
   return [self memoizedSelector:_cmd forBlock:^id{
-      return [self x509ValueForLabel:(__bridge NSString *)kSecOIDOrganizationName
-                      fromDictionary:[self x509IssuerName]];
+    return [self x509ValueForLabel:(__bridge NSString *)kSecOIDOrganizationName
+                    fromDictionary:[self x509IssuerName]];
   }];
 }
 
 - (NSString *)issuerOrgUnit {
   return [self memoizedSelector:_cmd forBlock:^id{
-      return [self x509ValueForLabel:(__bridge NSString *)kSecOIDOrganizationalUnitName
-                      fromDictionary:[self x509IssuerName]];
+    return [[self issuerOrgUnits] firstObject];
+  }];
+}
+
+- (NSArray *)issuerOrgUnits {
+  return [self memoizedSelector:_cmd forBlock:^id{
+    return [self x509ListForLabel:(__bridge NSString *)kSecOIDOrganizationalUnitName
+                   fromDictionary:[self x509IssuerName]];
   }];
 }
 
@@ -405,6 +417,12 @@ static NSString *const kCertDataKey = @"certData";
   return [self memoizedSelector:_cmd forBlock:^id{
     return [self x509ValueForLabel:(__bridge NSString *)kSecOIDMS_NTPrincipalName
                     fromDictionary:[self x509SubjectAltName]];
+  }];
+}
+
+- (NSString *)dnsName {
+  return [self memoizedSelector:_cmd forBlock:^id{
+    return [[self dnsNames] firstObject];
   }];
 }
 
