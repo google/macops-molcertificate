@@ -97,6 +97,8 @@
                         @"TÜBİTAK UEKAE Kök Sertifika Hizmet Sağlayıcısı - Sürüm 3");
   XCTAssertEqualObjects(sut.orgUnit,
                         @"Ulusal Elektronik ve Kriptoloji Araştırma Enstitüsü - UEKAE");
+  XCTAssertEqualObjects(sut.orgUnits[1],
+                        @"Kamu Sertifikasyon Merkezi");
   XCTAssertEqualObjects(sut.orgName,
                         @"Türkiye Bilimsel ve Teknolojik Araştırma Kurumu - TÜBİTAK");
   XCTAssertEqualObjects(sut.countryName, @"TR");
@@ -116,6 +118,7 @@
   XCTAssertEqualObjects(sut.validUntil, [NSDate dateWithString:@"2015-04-04 15:15:55 +0000"]);
   XCTAssertTrue(sut.isCA);
   XCTAssertEqualObjects(sut.serialNumber, @"146025");
+  XCTAssertEqualObjects(sut.dnsName, nil);
 
   sut = [[MOLCertificate alloc] initWithCertificateDataPEM:self.testDataPEM2];
   XCTAssertNotNil(sut);
@@ -125,6 +128,7 @@
   XCTAssertEqualObjects(sut.issuerCommonName, @"VeriSign Class 3 Extended Validation SSL SGC CA");
   XCTAssertEqualObjects(sut.issuerOrgName, @"VeriSign, Inc.");
   XCTAssertEqualObjects(sut.issuerOrgUnit, @"VeriSign Trust Network");
+  XCTAssertEqualObjects(sut.issuerOrgUnits[1], @"Terms of use at https://www.verisign.com/rpa (c)06");
   XCTAssertEqualObjects(sut.SHA1, @"96df534f6f4306ca474d9078fc346b20f856f0d4");
   XCTAssertEqualObjects(sut.SHA256,
       @"129d39ff4384197dc2bcbe1a83a69b3405b7df33254b1b1ee29a23847a23555a");
@@ -132,9 +136,7 @@
   XCTAssertEqualObjects(sut.validUntil, [NSDate dateWithString:@"2015-11-14 23:59:59 +0000"]);
   XCTAssertFalse(sut.isCA);
   XCTAssertEqualObjects(sut.serialNumber, @"5E FA 67 0E 99 E4 AB 88 E0 F2 0B 33 86 7B 78 4D");
-  XCTAssertNotNil(sut.dnsNames);
-  XCTAssertEqual(sut.dnsNames.count, 1);
-  XCTAssertEqualObjects(sut.dnsNames[0], @"www.apple.com");
+  XCTAssertEqualObjects(sut.dnsName, @"www.apple.com");
   
   sut = [[MOLCertificate alloc] initWithCertificateDataPEM:self.testNTPrincipalName];
   XCTAssertNotNil(sut);

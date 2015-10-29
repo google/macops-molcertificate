@@ -84,8 +84,11 @@
 /**  Organization Name e.g: "Apple Inc." */
 @property(readonly, nonatomic) NSString *orgName;
 
-/**  Organizational Unit Name e.g: "Apple Software" */
+/**  Organizational Unit Name. Returns the first OU e.g: "Apple Software". */
 @property(readonly, nonatomic) NSString *orgUnit;
+
+/**  Organizational Unit Names. Returns an array of all OUs e.g: ("Apple Software", "Apple"). */
+@property(readonly, nonatomic) NSArray *orgUnits;
 
 /**  Is this cert able to issue certs? */
 @property(readonly, nonatomic) BOOL isCA;
@@ -102,8 +105,11 @@
 /**  Issuer organization name. */
 @property(readonly, nonatomic) NSString *issuerOrgName;
 
-/**  Issuer organizational unit. */
+/**  Issuer organizational unit. Returns the first issuer OU. */
 @property(readonly, nonatomic) NSString *issuerOrgUnit;
+
+/**  Issuer organizational units. Returns an array of all issuer OUs. */
+@property(readonly, nonatomic) NSArray *issuerOrgUnits;
 
 /**  Validity not before / valid from date. */
 @property(readonly, nonatomic) NSDate *validFrom;
@@ -114,7 +120,10 @@
 /**  NT Principal Name */
 @property(readonly, nonatomic) NSString *ntPrincipalName;
 
-/**  DNS Names / SANs */
+/**  DNS Name. Returns the first DNS Name from the SAN */
+@property(readonly, nonatomic) NSString *dnsName;
+
+/**  DNS Names. Returns an array of all DNS Names from the SAN */
 @property(readonly, nonatomic) NSArray *dnsNames;
 
 @end
