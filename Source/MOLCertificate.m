@@ -113,6 +113,18 @@ static NSString *const kCertDataKey = @"certData";
   return certs;
 }
 
++ (NSArray *)certificatesFromArray:(NSArray *)array {
+  NSMutableArray *newArray = [NSMutableArray arrayWithCapacity:array.count];
+  for (id object in array) {
+    if (CFGetTypeID((__bridge CFTypeRef)object) == SecCertificateGetTypeID()) {
+      SecCertificateRef cert = (__bridge SecCertificateRef)object;
+      MOLCertificate *molCert = [[MOLCertificate alloc] initWithSecCertificateRef:cert];
+      if (molCert) [newArray addObject:molCert];
+    }
+  }
+  return [newArray copy];
+}
+
 - (instancetype)init {
   [self doesNotRecognizeSelector:_cmd];
   return nil;
@@ -247,7 +259,7 @@ static NSString *const kCertDataKey = @"certData";
   @try {
     NSArray *valArray = dict[(__bridge NSString *)kSecPropertyKeyValue];
     NSMutableArray *retArray = [[NSMutableArray alloc] init];
-    
+
     for (NSDictionary *curCertVal in valArray) {
       NSString *valueLabel = curCertVal[(__bridge NSString *)kSecPropertyKeyLabel];
       if ([valueLabel isEqual:desiredLabel]) {

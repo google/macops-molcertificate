@@ -17,7 +17,7 @@
 /** An Objective-C wrapper around `SecCertificateRef` objects provided by the Security framework.
 
   Accessors are read-only properties and access to each property is cached for future use.
- 
+
   `MOLCertificate` objects can be passed over an XPC connection freely, though the receiving
   end will not benefit from any previously cached properties and the underlying SecCertificateRef
   may be different.
@@ -26,7 +26,7 @@
 
 /**
   Initialize a `MOLCertificate` object with a valid `SecCertificateRef`.
- 
+
   Designated initializer.
 
   @param certRef A valid `SecCertificateRef`, which will be retained.
@@ -59,8 +59,16 @@
 + (NSArray *)certificatesFromPEM:(NSString *)pemData;
 
 /**
+  Returns an array of `MOLCertificate's` for each SecCertificateRef in `array`.
+
+  @param NSArray of SecCertificateRef's.
+  @return An array of `MOLCertificate` objects for each SecCertificateRef in `array`.
+*/
++ (NSArray *)certificatesFromArray:(NSArray *)array;
+
+/**
   Access the underlying certificate ref.
- 
+
   If you're planning on using the ref for a long time, you should
   CFRetain() it and CFRelease() it when you're finished.
 */
