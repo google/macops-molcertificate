@@ -39,7 +39,7 @@
   self.testDataPEM2 = [NSString stringWithContentsOfFile:file
                                                 encoding:NSUTF8StringEncoding
                                                    error:nil];
-  
+
   file = [[NSBundle bundleForClass:[self class]] pathForResource:@"NTPrincipalName" ofType:@"pem"];
   self.testNTPrincipalName = [NSString stringWithContentsOfFile:file
                                                        encoding:NSUTF8StringEncoding
@@ -137,7 +137,7 @@
   XCTAssertFalse(sut.isCA);
   XCTAssertEqualObjects(sut.serialNumber, @"5E FA 67 0E 99 E4 AB 88 E0 F2 0B 33 86 7B 78 4D");
   XCTAssertEqualObjects(sut.dnsName, @"www.apple.com");
-  
+
   sut = [[MOLCertificate alloc] initWithCertificateDataPEM:self.testNTPrincipalName];
   XCTAssertNotNil(sut);
   XCTAssertEqualObjects(sut.ntPrincipalName, @"lha@TEST.H5L.SE");
@@ -207,7 +207,9 @@
 - (void)testDescription {
   MOLCertificate *sut = [[MOLCertificate alloc] initWithCertificateDataPEM:self.testDataPEM1];
 
-  XCTAssertEqualObjects([sut description], @"/O=Google Inc/OU=(null)/CN=Google Internet Authority G2");
+  XCTAssertEqualObjects( [sut description],
+      @"/O=Google Inc/OU=(null)/CN=Google Internet Authority G2/"
+      @"SHA-1=d83c1a7f4d0446bb2081b81a1670f8183451ca24");
 }
 
 - (void)testSecureCoding {

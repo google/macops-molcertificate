@@ -150,7 +150,8 @@ static NSString *const kCertDataKey = @"certData";
 
 - (NSString *)description {
   return
-      [NSString stringWithFormat:@"/O=%@/OU=%@/CN=%@", self.orgName, self.orgUnit, self.commonName];
+      [NSString stringWithFormat:@"/O=%@/OU=%@/CN=%@/SHA-1=%@",
+          self.orgName, self.orgUnit, self.commonName, self.SHA1];
 }
 
 #pragma mark NSSecureCoding
