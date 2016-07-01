@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'MOLCertificate'
-  s.version      = '1.4'
+  s.version      = '1.5'
   s.platform     = :osx
   s.license      = { :type => 'Apache', :file => 'LICENSE' }
   s.homepage     = 'https://github.com/google/macops-molcertificate'
