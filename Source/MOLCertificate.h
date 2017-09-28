@@ -61,7 +61,7 @@
 /**
   Returns an array of `MOLCertificate's` for each SecCertificateRef in `array`.
 
-  @param NSArray of SecCertificateRef's.
+  @param array NSArray of SecCertificateRef's.
   @return An array of `MOLCertificate` objects for each SecCertificateRef in `array`.
 */
 + (NSArray *)certificatesFromArray:(NSArray *)array;
