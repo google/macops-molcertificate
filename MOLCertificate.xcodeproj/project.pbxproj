@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0D53CACD1B71548E00073187 /* libMOLCertificate.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D53CAC11B71548E00073187 /* libMOLCertificate.dylib */; };
-		0D53CADD1B71549A00073187 /* MOLCertificate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D53CADB1B71549A00073187 /* MOLCertificate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0D53CADE1B71549A00073187 /* MOLCertificate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D53CADC1B71549A00073187 /* MOLCertificate.m */; };
 		0D53CAE01B7154A000073187 /* MOLCertificateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D53CADF1B7154A000073187 /* MOLCertificateTest.m */; };
 		0D53CAE51B7154B700073187 /* apple.pem in Resources */ = {isa = PBXBuildFile; fileRef = 0D53CAE11B7154B700073187 /* apple.pem */; };
 		0D53CAE61B7154B700073187 /* GIAG2.crt in Resources */ = {isa = PBXBuildFile; fileRef = 0D53CAE21B7154B700073187 /* GIAG2.crt */; };
 		0D53CAE71B7154B700073187 /* GIAG2.pem in Resources */ = {isa = PBXBuildFile; fileRef = 0D53CAE31B7154B700073187 /* GIAG2.pem */; };
 		0D53CAE81B7154B700073187 /* tubitak.crt in Resources */ = {isa = PBXBuildFile; fileRef = 0D53CAE41B7154B700073187 /* tubitak.crt */; };
+		C7C1D4CF2045E2FA00E896E5 /* MOLCertificate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C1D4CE2045E2F200E896E5 /* MOLCertificate.m */; };
+		C7C1D4D02045E32000E896E5 /* MOLCertificate.h in Headers */ = {isa = PBXBuildFile; fileRef = C7C1D4CD2045E2F200E896E5 /* MOLCertificate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D26C9B441BCC3BA00046845A /* NTPrincipalName.pem in Resources */ = {isa = PBXBuildFile; fileRef = D26C9B431BCC3BA00046845A /* NTPrincipalName.pem */; };
 /* End PBXBuildFile section */
 
@@ -32,13 +32,13 @@
 		0D53CAC11B71548E00073187 /* libMOLCertificate.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libMOLCertificate.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D53CACC1B71548E00073187 /* MOLCertificateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MOLCertificateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D53CAD21B71548E00073187 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0D53CADB1B71549A00073187 /* MOLCertificate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOLCertificate.h; sourceTree = "<group>"; };
-		0D53CADC1B71549A00073187 /* MOLCertificate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOLCertificate.m; sourceTree = "<group>"; };
 		0D53CADF1B7154A000073187 /* MOLCertificateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOLCertificateTest.m; sourceTree = "<group>"; };
 		0D53CAE11B7154B700073187 /* apple.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = apple.pem; sourceTree = "<group>"; };
 		0D53CAE21B7154B700073187 /* GIAG2.crt */ = {isa = PBXFileReference; lastKnownFileType = file; path = GIAG2.crt; sourceTree = "<group>"; };
 		0D53CAE31B7154B700073187 /* GIAG2.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GIAG2.pem; sourceTree = "<group>"; };
 		0D53CAE41B7154B700073187 /* tubitak.crt */ = {isa = PBXFileReference; lastKnownFileType = file; path = tubitak.crt; sourceTree = "<group>"; };
+		C7C1D4CD2045E2F200E896E5 /* MOLCertificate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOLCertificate.h; sourceTree = "<group>"; };
+		C7C1D4CE2045E2F200E896E5 /* MOLCertificate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOLCertificate.m; sourceTree = "<group>"; };
 		D26C9B431BCC3BA00046845A /* NTPrincipalName.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NTPrincipalName.pem; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,7 +64,7 @@
 		0D53CAB81B71548E00073187 = {
 			isa = PBXGroup;
 			children = (
-				0D53CAC31B71548E00073187 /* Source */,
+				C7C1D4CB2045E2F200E896E5 /* Source */,
 				0D53CAD01B71548E00073187 /* Tests */,
 				0D53CAC21B71548E00073187 /* Products */,
 			);
@@ -77,15 +77,6 @@
 				0D53CACC1B71548E00073187 /* MOLCertificateTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		0D53CAC31B71548E00073187 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				0D53CADB1B71549A00073187 /* MOLCertificate.h */,
-				0D53CADC1B71549A00073187 /* MOLCertificate.m */,
-			);
-			path = Source;
 			sourceTree = "<group>";
 		};
 		0D53CAD01B71548E00073187 /* Tests */ = {
@@ -110,6 +101,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C7C1D4CB2045E2F200E896E5 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				C7C1D4CC2045E2F200E896E5 /* MOLCertificate */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		C7C1D4CC2045E2F200E896E5 /* MOLCertificate */ = {
+			isa = PBXGroup;
+			children = (
+				C7C1D4CD2045E2F200E896E5 /* MOLCertificate.h */,
+				C7C1D4CE2045E2F200E896E5 /* MOLCertificate.m */,
+			);
+			path = MOLCertificate;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -117,7 +125,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D53CADD1B71549A00073187 /* MOLCertificate.h in Headers */,
+				C7C1D4D02045E32000E896E5 /* MOLCertificate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,7 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D53CADE1B71549A00073187 /* MOLCertificate.m in Sources */,
+				C7C1D4CF2045E2FA00E896E5 /* MOLCertificate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
