@@ -14,7 +14,7 @@
 
 #import <XCTest/XCTest.h>
 
-#import "MOLCertificate.h"
+#import <MOLCertificate/MOLCertificate.h>
 
 @interface MOLCertificateTest : XCTestCase
 @property NSString *testDataPEM1;
@@ -114,8 +114,10 @@
   XCTAssertEqualObjects(sut.SHA1, @"d83c1a7f4d0446bb2081b81a1670f8183451ca24");
   XCTAssertEqualObjects(sut.SHA256,
       @"a047a37fa2d2e118a4f5095fe074d6cfe0e352425a7632bf8659c03919a6c81d");
-  XCTAssertEqualObjects(sut.validFrom, [NSDate dateWithString:@"2013-04-05 15:15:55 +0000"]);
-  XCTAssertEqualObjects(sut.validUntil, [NSDate dateWithString:@"2015-04-04 15:15:55 +0000"]);
+  NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+  dateFormat.dateFormat = @"yyyy-MM-dd HH:mm:ss Z";
+  XCTAssertEqualObjects(sut.validFrom, [dateFormat dateFromString:@"2013-04-05 15:15:55 +0000"]);
+  XCTAssertEqualObjects(sut.validUntil, [dateFormat dateFromString:@"2015-04-04 15:15:55 +0000"]);
   XCTAssertTrue(sut.isCA);
   XCTAssertEqualObjects(sut.serialNumber, @"146025");
   XCTAssertEqualObjects(sut.dnsName, nil);
@@ -128,12 +130,13 @@
   XCTAssertEqualObjects(sut.issuerCommonName, @"VeriSign Class 3 Extended Validation SSL SGC CA");
   XCTAssertEqualObjects(sut.issuerOrgName, @"VeriSign, Inc.");
   XCTAssertEqualObjects(sut.issuerOrgUnit, @"VeriSign Trust Network");
-  XCTAssertEqualObjects(sut.issuerOrgUnits[1], @"Terms of use at https://www.verisign.com/rpa (c)06");
+  XCTAssertEqualObjects(sut.issuerOrgUnits[1],
+      @"Terms of use at https://www.verisign.com/rpa (c)06");
   XCTAssertEqualObjects(sut.SHA1, @"96df534f6f4306ca474d9078fc346b20f856f0d4");
   XCTAssertEqualObjects(sut.SHA256,
       @"129d39ff4384197dc2bcbe1a83a69b3405b7df33254b1b1ee29a23847a23555a");
-  XCTAssertEqualObjects(sut.validFrom, [NSDate dateWithString:@"2013-11-14 00:00:00 +0000"]);
-  XCTAssertEqualObjects(sut.validUntil, [NSDate dateWithString:@"2015-11-14 23:59:59 +0000"]);
+  XCTAssertEqualObjects(sut.validFrom, [dateFormat dateFromString:@"2013-11-14 00:00:00 +0000"]);
+  XCTAssertEqualObjects(sut.validUntil, [dateFormat dateFromString:@"2015-11-14 23:59:59 +0000"]);
   XCTAssertFalse(sut.isCA);
   XCTAssertEqualObjects(sut.serialNumber, @"5E FA 67 0E 99 E4 AB 88 E0 F2 0B 33 86 7B 78 4D");
   XCTAssertEqualObjects(sut.dnsName, @"www.apple.com");
