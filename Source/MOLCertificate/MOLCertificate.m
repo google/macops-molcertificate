@@ -29,6 +29,7 @@ static NSString *const kCertDataKey = @"certData";
 #pragma mark Init/Dealloc
 
 - (instancetype)initWithSecCertificateRef:(SecCertificateRef)certRef {
+  if (!certRef) return nil;
   self = [super init];
   if (self) {
     _certRef = certRef;
