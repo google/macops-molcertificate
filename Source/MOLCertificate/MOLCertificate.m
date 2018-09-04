@@ -47,7 +47,12 @@ static NSString *const kCertDataKey = @"certData";
     // radar://problem/16124651
     // To workaround, check that the certificate serial number can be retrieved. According to
     // RFC5280, the serial number field is required.
+#if __MAC_OS_X_VERSION_MIN_REQUIRED < 10130
     NSData *ser = CFBridgingRelease(SecCertificateCopySerialNumber(cert, NULL));
+#else
+    NSData *ser = CFBridgingRelease(SecCertificateCopySerialNumberData(cert, NULL));
+#endif
+
     if (ser) {
       self = [self initWithSecCertificateRef:cert];
     } else {

@@ -1,5 +1,3 @@
 .DS_Store
-*/build/*
 Pods
-xcuserdata
-xcuserdata/*
+bazel-*
