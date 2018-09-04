@@ -33,13 +33,37 @@ Requires ARC. Tested on OS X 10.9+.
 
 ## Installation
 
-Install using CocoaPods.
+#### Using CocoaPods
+
+Add the following line to your Podfile:
 
 ```
 pod 'MOLCertificate'
 ```
 
-You can also import the project manually but this isn't tested.
+#### Using [Bazel](http://bazel.build)
+
+Add the following to your WORKSPACE:
+
+```
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+git_repository(
+    name = "MOLCertificate",
+    remote = "https://github.com/google/macops-molcertificate.git",
+    tag = "v2.0",
+)
+```
+
+And in your BUILD file, add MOLCertificate as a dependency:
+
+<pre>
+objc_library(
+    name = "MyAwesomeApp_lib",
+    srcs = ["src/MyAwesomeApp.m", "src/MyAwesomeApp.h"],
+    <strong>deps = ["@MOLCertificate//:MOLCertificate"],</strong>
+)
+</pre>
 
 ## Documentation
 
