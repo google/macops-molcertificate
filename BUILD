@@ -23,7 +23,7 @@ load("@build_bazel_rules_apple//apple:macos.bzl", "macos_unit_test")
 
 macos_unit_test(
     name = "MOLCertificateTests",
-    minimum_os_version = "10.9",
+    minimum_os_version = "10.13",
     resources = glob([
         "Tests/*.pem",
         "Tests/*.crt",
