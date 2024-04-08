@@ -1,7 +1,7 @@
 # MOLCertificate
 Objective-C wrapper around SecCertificateRef with caching accessors.
 
-Requires ARC. Tested on OS X 10.9+.
+Requires ARC. Tested on OS X 10.13+.
 
 ## Usage
 
